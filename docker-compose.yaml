@@ -1,0 +1,30 @@
+---
+version: "2.1"
+services:
+  code-server:
+    image: oddcc/my-code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1002
+      - PGID=1002
+      - TZ=Asia/Shanghai
+      - PASSWORD=${PASSWORD} #optional
+      # - HASHED_PASSWORD= #optional
+      - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
+      # - SUDO_PASSWORD_HASH= #optional
+      # - PROXY_DOMAIN=code-server.my.domain #optional
+      - DEFAULT_WORKSPACE=/config/workspace #optional
+      - DOCKER_MODS=linuxserver/mods:universal-docker-in-docker
+    volumes:
+      - $PWD/config:/config
+      - $PWD/custom/script:/custom-cont-init.d:ro
+      - $PWD/custom/extensions:/tmp/custom/extensions:ro
+      - $PWD/config/extensions
+      - $HOME/.ssh:/config/.ssh
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+    network_mode: cftunnel
+    # labels:
+      # - "com.centurylinklabs.watchtower.enable=true"
+    privileged: true

@@ -45,5 +45,7 @@ RUN \
 # add local files
 COPY /root /
 
+COPY custom/script /custom-cont-init.d
+
 # ports and volumes
 EXPOSE 8443
