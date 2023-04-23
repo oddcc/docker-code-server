@@ -42,3 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .jenkins-external
+
+# this is for code-server deployment
+config/
+.env
