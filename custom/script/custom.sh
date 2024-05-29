@@ -64,3 +64,4 @@ for i in /tmp/custom/extensions/*; do /app/code-server/bin/code-server --force -
 /app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension hediet.vscode-drawio
 /app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension formulahendry.code-runner
 /app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension GitHub.vscode-github-actions
+/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension esbenp.prettier-vscode
