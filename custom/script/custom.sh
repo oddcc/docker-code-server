@@ -11,21 +11,19 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm use --lts
 
-# install java
-apt-get update
-apt-get install -y \
-	openjdk-8-jdk-headless \
-	openjdk-11-jdk-headless \
-	openjdk-17-jdk-headless
-
 # install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt-get update
 apt-get install -y yarn
 
+# install java
+apt-get install -y \
+	openjdk-8-jdk-headless \
+	openjdk-11-jdk-headless \
+	openjdk-17-jdk-headless
+
 # install python, make, g++, chromium-browser
-apt-get update
 apt-get install -y \
 	make \
 	g++ \
