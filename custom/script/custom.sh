@@ -55,13 +55,20 @@ cp /root/.bashrc /config/.bashrc
 
 # install extentions
 for i in /tmp/custom/extensions/*; do /app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension "$i"; done
-# TODO use other config just for the extension names
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension golang.go
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension k--kato.intellij-idea-keybindings
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension VMware.vscode-boot-dev-pack
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension vscjava.vscode-java-pack
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension sonarsource.sonarlint-vscode
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension hediet.vscode-drawio
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension formulahendry.code-runner
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension GitHub.vscode-github-actions
-/app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension esbenp.prettier-vscode
+extensions=(
+    "golang.go"
+    "k--kato.intellij-idea-keybindings"
+    "VMware.vscode-boot-dev-pack"
+    "vscjava.vscode-java-pack"
+    "sonarsource.sonarlint-vscode"
+    "hediet.vscode-drawio"
+    "formulahendry.code-runner"
+    "GitHub.vscode-github-actions"
+    "esbenp.prettier-vscode"
+    "dbaeumer.vscode-eslint"
+)
+
+for ext in "${extensions[@]}"
+do
+    /app/code-server/bin/code-server --force --extensions-dir /config/extensions --install-extension "$ext"
+done
