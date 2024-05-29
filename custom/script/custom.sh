@@ -64,6 +64,7 @@ extensions=(
     "GitHub.vscode-github-actions"
     "esbenp.prettier-vscode"
     "dbaeumer.vscode-eslint"
+    "WakaTime.vscode-wakatime"
 )
 
 for ext in "${extensions[@]}"
