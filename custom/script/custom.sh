@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # install nvm and nodejs
 NVM_VERSION=v0.39.7
 rm -rf /config/.nvm
@@ -27,7 +29,6 @@ apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 groupadd docker
 usermod -aG docker abc
-service docker start
 
 # install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -

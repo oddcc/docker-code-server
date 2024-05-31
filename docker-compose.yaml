@@ -17,6 +17,7 @@ services:
     volumes:
       - $PWD/config:/config
       - $PWD/custom/script:/custom-cont-init.d:ro
+      - $PWD/custom/services:/custom-services.d:ro
       - $PWD/custom/extensions:/tmp/custom/extensions:ro
       - $PWD/config/extensions
       - $HOME/.ssh:/config/.ssh
