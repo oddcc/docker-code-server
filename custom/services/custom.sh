@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-sudo /usr/sbin/service docker start
+# sudo /usr/sbin/service docker start
+echo "test"
