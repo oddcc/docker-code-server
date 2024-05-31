@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-/usr/sbin/service docker start
+systemctl enable docker.service
+systemctl enable containerd.service
