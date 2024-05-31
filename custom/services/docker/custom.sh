@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-# sudo /usr/sbin/service docker start
-echo "test"
+/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+echo 'Docker service started!'
