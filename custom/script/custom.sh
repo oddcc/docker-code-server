@@ -27,8 +27,7 @@ apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 groupadd docker
 usermod -aG docker abc
-systemctl enable docker.service
-systemctl enable containerd.service
+service docker start
 
 # install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -83,6 +82,7 @@ extensions=(
     "esbenp.prettier-vscode"
     "dbaeumer.vscode-eslint"
     "WakaTime.vscode-wakatime"
+    "ms-azuretools.vscode-docker"
 )
 
 for ext in "${extensions[@]}"
