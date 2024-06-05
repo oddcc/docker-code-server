@@ -25,6 +25,6 @@ services:
       - 8443:8443
     restart: unless-stopped
     network_mode: cftunnel
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+    # labels:
+      # - "com.centurylinklabs.watchtower.enable=true"
     privileged: true
