@@ -74,7 +74,8 @@ extensions=(
     "WakaTime.vscode-wakatime"
     "ms-azuretools.vscode-docker"
     "Codeium.codeium"
-    "James-Yu.latex-workshop"
+    # "James-Yu.latex-workshop"
+    "mjpvs.latex-previewer"
 )
 
 for ext in "${extensions[@]}"
