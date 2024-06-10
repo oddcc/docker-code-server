@@ -14,12 +14,12 @@ nvm install --lts
 nvm use --lts
 
 # install TeX Live
-cd /tmp
-curl -L -o install-tl-unx.tar.gz https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-zcat < install-tl-unx.tar.gz | tar xf -
-cd install-tl-2*
-perl ./install-tl --no-interaction
-echo 'export PATH=$PATH:/usr/local/texlive/2024/bin/aarch64-linux' >> /root/.bashrc
+# cd /tmp
+# curl -L -o install-tl-unx.tar.gz https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+# zcat < install-tl-unx.tar.gz | tar xf -
+# cd install-tl-2*
+# perl ./install-tl --no-interaction
+# echo 'export PATH=$PATH:/usr/local/texlive/2024/bin/aarch64-linux' >> /root/.bashrc
 
 # install yarn
 npm install --global yarn
@@ -74,8 +74,6 @@ extensions=(
     "WakaTime.vscode-wakatime"
     "ms-azuretools.vscode-docker"
     "Codeium.codeium"
-    # "James-Yu.latex-workshop"
-    "mjpvs.latex-previewer"
 )
 
 for ext in "${extensions[@]}"
