@@ -18,4 +18,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
         service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
-        commands: mkdir hello-world -v
+        commands: cd ~/container/docker-code-server && docker-compose pull && git pull && docker-compose down && docker-compose up -d
