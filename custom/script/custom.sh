@@ -26,14 +26,6 @@ esac
 # pnpm end
 EOF
 
-# pnpm
-export PNPM_HOME="/config/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # install yarn
 npm install --global yarn
 
