@@ -32,7 +32,7 @@ jobs:
         private_key_filename: ${{ secrets.PRIVATE_KEY_FILENAME }}
         private_key_value: ${{ secrets.PRIVATE_KEY_VALUE }}
         port: ${{ secrets.SSH_PORT }}
-        service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
-        service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
+        # service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
+        # service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
         commands: mkdir hello-world -v
 
