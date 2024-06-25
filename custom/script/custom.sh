@@ -13,16 +13,16 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm use --lts
 
-# install TeX Live
-# cd /tmp
-# curl -L -o install-tl-unx.tar.gz https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-# zcat < install-tl-unx.tar.gz | tar xf -
-# cd install-tl-2*
-# perl ./install-tl --no-interaction
-# echo 'export PATH=$PATH:/usr/local/texlive/2024/bin/aarch64-linux' >> /root/.bashrc
+# install pnpm
+export SHELL=bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # install yarn
 npm install --global yarn
+
+# resolve node-canvas on arm64 issue
+apt-get update
+apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
 # install java
 apt-get install -y \
