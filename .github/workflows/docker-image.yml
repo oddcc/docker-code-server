@@ -24,3 +24,15 @@ jobs:
     - name: Push Docker image
       run: docker push oddcc/my-code-server:latest
 
+    - name: Update container on the server
+      uses: and-fm/cloudflared-ssh-action@v3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        private_key_filename: ${{ secrets.PRIVATE_KEY_FILENAME }}
+        private_key_value: ${{ secrets.RIVATE_KEY_VALUE }}
+        port: ${{ secrets.SSH_PORT }}
+        service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
+        service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
+        commands: mkdir hello-world -v
+
