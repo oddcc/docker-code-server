@@ -16,6 +16,23 @@ nvm use --lts
 # install pnpm
 export SHELL=bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+cat <<EOF > /root/.bashrc
+# pnpm
+export PNPM_HOME="/config/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+EOF
+
+# pnpm
+export PNPM_HOME="/config/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 # install yarn
 npm install --global yarn
