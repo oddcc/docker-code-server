@@ -16,7 +16,7 @@ nvm use --lts
 # install pnpm
 export SHELL=bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-cat <<EOF > /root/.bashrc
+cat <<EOF >> /root/.bashrc
 # pnpm
 export PNPM_HOME="/config/.local/share/pnpm"
 case ":$PATH:" in
