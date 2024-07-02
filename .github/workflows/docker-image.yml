@@ -26,6 +26,7 @@ jobs:
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Update container on the server
@@ -38,4 +39,19 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
         service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
-        commands: cd ~/container/docker-code-server && docker-compose pull && git pull && docker-compose down && docker-compose up -d
+        commands: |
+          cd ~/container/docker-code-server
+          docker-compose pull
+          git pull
+          docker-compose down
+          docker-compose up -d
+
+          while :; do
+            LOG_OUTPUT=$(docker-compose logs --tail=50)
+            echo "$LOG_OUTPUT"
+            if echo "$LOG_OUTPUT" | grep -q "[ls.io-init] done."; then
+              echo "Service started successfully."
+              exit 0
+            fi
+            sleep 5
+          done
