@@ -49,7 +49,7 @@ jobs:
           while :; do
             LOG_OUTPUT=$(docker-compose logs --tail=50)
             echo "$LOG_OUTPUT"
-            if echo "$LOG_OUTPUT" | grep -q "[ls.io-init] done."; then
+            if echo "$LOG_OUTPUT" | grep -F "[ls.io-init] done."; then
               echo "Service started successfully."
               exit 0
             fi
