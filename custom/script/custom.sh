@@ -83,6 +83,7 @@ extensions=(
     "WakaTime.vscode-wakatime"
     "ms-azuretools.vscode-docker"
     "Codeium.codeium"
+    "bradlc.vscode-tailwindcss"
 )
 
 for ext in "${extensions[@]}"
