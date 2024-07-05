@@ -29,8 +29,16 @@ EOF
 # install yarn
 npm install --global yarn
 
+# install ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | \
+  gpg --dearmor -o /etc/apt/keyrings/ngrok.gpg && \
+  echo "deb [signed-by=/etc/apt/keyrings/ngrok.gpg] https://ngrok-agent.s3.amazonaws.com buster main" | \
+  tee /etc/apt/sources.list.d/ngrok.list && \
+  apt update
+  apt install ngrok
+  ngrok config add-authtoken 2inu6OHnOstKqOFU2VudAymO1cV_3ssZ11mXX7fa3NG5oufbr
+
 # resolve node-canvas on arm64 issue
-apt-get update
 apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
 # install java
