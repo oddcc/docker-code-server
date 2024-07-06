@@ -92,6 +92,8 @@ extensions=(
     "ms-azuretools.vscode-docker"
     "Codeium.codeium"
     "bradlc.vscode-tailwindcss"
+    "mtxr.sqltools"
+    "mtxr.sqltools-driver-pg"
 )
 
 for ext in "${extensions[@]}"
