@@ -94,6 +94,7 @@ extensions=(
     "bradlc.vscode-tailwindcss"
     "mtxr.sqltools"
     "mtxr.sqltools-driver-pg"
+    "heybourn.headwind"
 )
 
 for ext in "${extensions[@]}"
