@@ -2,56 +2,56 @@ name: Build & Public Docker Image For aarch64
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   Build:
     runs-on: self-hosted
 
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v4.1.2
-    
-    - name: Docker Login
-      uses: docker/login-action@v3.1.0
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-      
-    - name: Build the Docker image for aarch64
-      run: docker build -f Dockerfile.aarch64 --no-cache --pull -t oddcc/my-code-server:latest .
-      
-    - name: Push Docker image
-      run: docker push oddcc/my-code-server:latest
+      - name: Checkout the code
+        uses: actions/checkout@v4.1.2
+
+      - name: Docker Login
+        uses: docker/login-action@v3.1.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build the Docker image for aarch64
+        run: docker build -f Dockerfile.aarch64 --no-cache --pull -t oddcc/my-code-server:latest .
+
+      - name: Push Docker image
+        run: docker push oddcc/my-code-server:latest
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
-    - name: Update container on the server
-      uses: and-fm/cloudflared-ssh-action@v3
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        private_key_filename: ${{ secrets.PRIVATE_KEY_FILENAME }}
-        private_key_value: ${{ secrets.PRIVATE_KEY_VALUE }}
-        port: ${{ secrets.SSH_PORT }}
-        service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
-        service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
-        commands: |
-          cd ~/container/docker-code-server
-          docker-compose pull
-          git pull
-          docker-compose down
-          docker-compose up -d
+      - name: Update container on the server
+        uses: and-fm/cloudflared-ssh-action@v3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          private_key_filename: ${{ secrets.PRIVATE_KEY_FILENAME }}
+          private_key_value: ${{ secrets.PRIVATE_KEY_VALUE }}
+          port: ${{ secrets.SSH_PORT }}
+          service_token_id: ${{ secrets.SERVICE_TOKEN_ID }}
+          service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
+          commands: |
+            cd ~/container/docker-code-server
+            docker-compose pull
+            git pull
+            docker-compose down
+            docker-compose up -d
 
-          while :; do
-            LOG_OUTPUT=$(docker-compose logs --tail=50)
-            echo "$LOG_OUTPUT"
-            if echo "$LOG_OUTPUT" | grep -F "[ls.io-init] done."; then
-              echo "Service started successfully."
-              exit 0
-            fi
-            sleep 5
-          done
+            while :; do
+              LOG_OUTPUT=$(docker-compose logs --tail=50)
+              echo "$LOG_OUTPUT"
+              if echo "$LOG_OUTPUT" | grep -F "[ls.io-init] done."; then
+                echo "Service started successfully."
+                exit 0
+              fi
+              sleep 5
+            done
