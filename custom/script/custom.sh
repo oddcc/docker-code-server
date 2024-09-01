@@ -51,16 +51,9 @@ apt-get install -y \
 apt-get install -y \
 	make \
 	g++ \
-	python3 \
+	python3-full \
 	chromium-browser \
-	vim \
-    python3-pip
-
-# install pipenv
-echo 'installing pipenv'
-pip install pipenv
-eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
-echo 'pipenv installed'
+	vim
 
 # install golang
 GOLANG_VERSION=1.22.3
