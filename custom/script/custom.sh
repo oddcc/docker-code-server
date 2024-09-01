@@ -53,7 +53,12 @@ apt-get install -y \
 	g++ \
 	python3 \
 	chromium-browser \
-	vim
+	vim \
+    python3-pip
+
+# install pipenv
+pip install pipenv
+eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 
 # install golang
 GOLANG_VERSION=1.22.3
