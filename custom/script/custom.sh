@@ -57,8 +57,10 @@ apt-get install -y \
     python3-pip
 
 # install pipenv
+echo 'installing pipenv'
 pip install pipenv
 eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+echo 'pipenv installed'
 
 # install golang
 GOLANG_VERSION=1.22.3
