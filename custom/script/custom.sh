@@ -54,12 +54,14 @@ apt-get install -y \
 	python3-full \
 	chromium-browser \
 	vim \
-    python3-pip
+    python3-pip \
+    pipx
 
 # install pipenv
 echo 'installing pipenv'
-pip install pipenv
-eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
+pipx install pipenv
+pipx ensurepath
+pipx completions
 echo 'pipenv installed'
 
 
