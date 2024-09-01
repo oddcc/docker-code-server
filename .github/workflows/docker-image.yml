@@ -42,7 +42,8 @@ jobs:
           commands: |
             cd ~/container/docker-code-server
             docker-compose pull
-            git pull
+            git fetch origin master
+            git reset --hard origin/master
             docker-compose down
             docker-compose up -d
 
