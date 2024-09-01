@@ -17,7 +17,7 @@ jobs:
 
       - name: Fetch upstream changes
         run: |
-          git remote add upstream git@github.com:linuxserver/docker-code-server.git
+          git remote add upstream https://github.com/linuxserver/docker-code-server.git
           git fetch upstream master
 
       - name: Merge upstream changes
